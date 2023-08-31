@@ -1,2 +1,2 @@
 #!/bin/bash
- chmod -R guo+x
+sudo chmod -R guo+x
