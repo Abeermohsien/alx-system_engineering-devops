@@ -1,2 +1,2 @@
 #!/bin/bash
- find . -type d -execdir a+x {}
+ find . -type d -execdir chmod  a+x {}
