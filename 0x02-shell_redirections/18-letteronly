@@ -1,2 +1,2 @@
 #!/bin/bash
-grap *[[:alpha:]]/etc/ssh/sshd_config 
+grap ^ [[:alpha:]] /etc/ssh/sshd_config 
