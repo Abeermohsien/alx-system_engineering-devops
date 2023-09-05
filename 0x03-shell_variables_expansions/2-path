@@ -1,2 +1,2 @@
 #!/bin/bash
-mv -r  /action $PATH
+export PATH=$PATH:/action
