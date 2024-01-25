@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#while loop
+n=0
+while [[$n < 10]]
+do
+echo "Best School"
+((n++))
+done
