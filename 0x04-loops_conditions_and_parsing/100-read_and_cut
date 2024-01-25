@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#display content
+while r -r pw; do
+  echo "$pw" | cut -d ":" -f1,3,6
+done < "/etc/paswd"
