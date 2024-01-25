@@ -3,7 +3,7 @@
 n=0
 while [ $n -lt 10 ]
 do
-if [$n -eq 3 ]
+if [ $n -eq 3 ]
 then
 echo "bad luck"
 elif [ $n -eq 7 ]
