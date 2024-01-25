@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#write the directory
+dir=$(ls)
+for n in $dir; do
+ echo "$n" | cut -d '-' -f2
+done
