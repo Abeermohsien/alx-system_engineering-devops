@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#tells story
+while IFS=':' read -r us pas uid gid info hom shll; do
+  echo "The user $us is part of the $gid gang,"\
+  "lives in $hom and rides $shll."\
+  "$uid's place is protected by the passcode $pas,"\
+  "more info about the user here: $info"
+done < "/etc/passwd"
