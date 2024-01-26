@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 #display the PID
+#cannot use p s
 pgrep -l bash
