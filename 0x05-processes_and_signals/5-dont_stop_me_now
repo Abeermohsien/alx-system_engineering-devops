@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #stop program
-id=$(pgrep"bash ./4-to_infinity_and_beyond" -f)
+id=$(pgrep "bash ./4-to_infinity_and_beyond" -f)
+#terminat
 if [ -n "$id" ]
 then
   kill -15 "$id"
