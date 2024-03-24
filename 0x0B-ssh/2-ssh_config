@@ -1,10 +1,7 @@
-#!/usr/bin/env bash
-# ssh client
-
-Host *
-   PasswordAuthentication no
-   IdentityFile ~/.ssh/school
-   SendEnv LANG LC_*
-   HashKnownHosta yes
-   GSSAPIAuthentication yes
-   GSSAPIDelegateCredentials no
+# Ssh file 
+#
+Host web-01
+	Hostname 35.243.128.200
+	User ubuntu
+	PasswordAuthentication no
+	IdentityFile ~/.ssh/school
