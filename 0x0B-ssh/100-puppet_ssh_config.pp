@@ -1,4 +1,5 @@
 # Puppet
+
 include stdlib
 
 file_line { 'SSH Private Key':
