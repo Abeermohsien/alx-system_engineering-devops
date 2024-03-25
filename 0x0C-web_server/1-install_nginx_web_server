@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Creating new unbentu machine
+
+echo -e "Updating and installing Nginx.\n"
+sudo apt-get update -y -qq && \
+	 sudo apt-get install nginx -y
+
+echo -e "\nSetting up some minor stuff.\n"
+
+# Starting
+sudo service nginx start
+
+# Firewall 
+sudo ufw allow 'Nginx HTTP'
+
+# User ownership
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+# Index backupB
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+# ondex creating
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
+
+# nginx restatrtx
+sudo service nginx restart
+
+echo -e "\nCompleted. ✅\n"

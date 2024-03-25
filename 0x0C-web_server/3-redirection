@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# New ubentu configrtion
+
+
+echo -e "Updating and installing Nginx.\n"
+sudo apt-get update -y -qq && \
+         sudo apt-get install nginx -y
+
+echo -e "\nSetting up some minor stuff.\n"
+
+# new nginx
+sudo service nginx start
+
+# Nginx on firewall
+sudo ufw allow 'Nginx HTTP'
+
+# User ownership
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+# Index backup
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+# New index Creation
+echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
+
+# Setting up to youtube vedio
+sudo sed -i '24i\       rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+
+# nigx resatring
+sudo service nginx restart
+
+echo -e "\nCompleted.\n"
