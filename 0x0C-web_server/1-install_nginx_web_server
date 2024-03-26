@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Creating new unbentu machine
+#
 
 echo -e "Updating and installing Nginx.\n"
 sudo apt-get update -y -qq && \
