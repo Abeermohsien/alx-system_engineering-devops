@@ -8,23 +8,23 @@ sudo apt-get update -y -qq && \
 
 echo -e "\nSetting up some minor stuff.\n"
 
-# start a  nginx service
+# Start a  nginx service
 sudo service nginx start
 
-# allow the nginx to be on fire wall
+# Allow the nginx to be on fire wall
 sudo ufw allow 'Nginx HTTP'
 
-# Giving website files ownership to user
+# Ggiving website files ownership to user
 sudo chown -R "$USER":"$USER" /var/www/html
 sudo chmod -R 755 /var/www
 
-# Back up a default index
+# Bback up a default index
 cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
 
-# Creat a  new index
+# Ccreat a  new index
 echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
 
-# Restart the  nginx
+# Rrestart the  nginx
 sudo service nginx restart
 
 echo -e "\nCompleted. ✅\n"
