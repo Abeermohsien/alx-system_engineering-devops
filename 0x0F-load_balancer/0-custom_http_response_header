@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
-# Doubles webservers
-
-# make a new nginx
-apt-get  update ; apt-get -y install nginx
-
-string="http {\n\tadd_header X-Served-By \"$HOSTNAME\";"
-sudo sed -i "s/http {/$string/" /etc/nginx/nginx.conf
-# Restarting the nginx
+# automaoton config
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sed -i "/server_name _;/ a\\\tadd_header X-Served-By \"\$HOSTNAME\";" /etc/nginx/sites-available/default
 sudo service nginx restart

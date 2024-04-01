@@ -1,16 +1,20 @@
-# create a custim http
+# automate config
 
-exec {'update':
-  command => '/usr/bin/apt-get update',
+exec { 'apt-update':
+  command => '/usr/bin/apt-get update'
 }
--> package {'nginx':
-  ensure => 'present',
+
+package { 'nginx':
+  ensure => 'installed',
+  name   => 'nginx',
 }
--> file_line { 'http_header':
+
+file_line { 'append a line in nginx config file':
   path  => '/etc/nginx/nginx.conf',
-  line  => "http {\n\tadd_header X-Served-By \"${hostname}\";",
-  match => 'http {',
+  line  => "\tadd_header X-Served-By ${hostname};",
+  after => 'http {',
 }
--> exec {'start':
-  command => '/usr/sbin/service nginx start',
+
+exec { 'sudo service nginx restart':
+  command => '/usr/sbin/service nginx restart',
 }
