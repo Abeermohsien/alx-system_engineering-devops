@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Starting anew ubuntu
+# 
+# Nginx0
+# ngnixg
 #
 
 echo -e "Updating and installing Nginx.\n"
@@ -8,23 +10,23 @@ sudo apt-get update -y -qq && \
 
 echo -e "\nSetting up some minor stuff.\n"
 
-# Start a  nginx service
+# nginx service
 sudo service nginx start
 
-# Allow the nginx to be on fire wall
+# nginxall
 sudo ufw allow 'Nginx HTTP'
 
-# Ggiving website files ownership to user
+# ngnix
 sudo chown -R "$USER":"$USER" /var/www/html
 sudo chmod -R 755 /var/www
 
-# Bback up a default index
+# nginex
 cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
 
-# Ccreat a  new index
+# nignx
 echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
 
-# Rrestart the  nginx
+# nignx
 sudo service nginx restart
 
 echo -e "\nCompleted. ✅\n"
