@@ -1,12 +1,7 @@
 
 #!/usr/bin/env bash
 
-# Installs HAProxy with the following configurations:
-
-# - Enables management via the init script.
-
-# - Distributes requests using a round-robin algorithm.
-
+# installing haproxy
 
 sudo apt-get install -y haproxy
 
