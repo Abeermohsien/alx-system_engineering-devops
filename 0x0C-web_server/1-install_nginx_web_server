@@ -1,32 +1,10 @@
 #!/usr/bin/env bash
-# 
-# Nginx0
-# ngnixg
-#
+# .
+#.
 
-echo -e "Updating and installing Nginx.\n"
-sudo apt-get update -y -qq && \
-	 sudo apt-get install nginx -y
-
-echo -e "\nSetting up some minor stuff.\n"
-
-# nginx service
-sudo service nginx start
-
-# nginxall
-sudo ufw allow 'Nginx HTTP'
-
-# ngnix
-sudo chown -R "$USER":"$USER" /var/www/html
-sudo chmod -R 755 /var/www
-
-# nginex
-cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
-
-# nignx
-echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
-
-# nignx
-sudo service nginx restart
-
-echo -e "\nCompleted. ✅\n"
+if [ $# -lt 4 ]
+then
+  echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+else
+  scp -o StrictHostKeyChecking=no -i "$4" "$1" "$3@$2":~
+fi
