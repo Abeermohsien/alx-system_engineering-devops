@@ -12,9 +12,9 @@ runDig () {
 
 if [ $# -eq 1 ]; then
     domain="$1"
-    for i in "${subdomains_all[@]}"
+    for j in "${subdomains_all[@]}"
     do
-	runDig "$i" "$domain"
+	runDig "$j" "$domain"
     done
 elif [ $# -eq 2 ]; then
     domain="$1"
