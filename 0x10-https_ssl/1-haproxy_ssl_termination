@@ -4,8 +4,10 @@ global
         chroot /var/lib/haproxy
         stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
         stats timeout 30s
+        maxconn 2048
         user haproxy
         group haproxy
+        tune.ssl.default-dh-param 2048
         daemon
 
         # Default SSL material locations
@@ -32,25 +34,14 @@ defaults
         errorfile 502 /etc/haproxy/errors/502.http
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
-frontend web-frontend
-        bind *:443
-        mode http
-        default_backend web_backend
-backend web_backend
-        mode http
+frontend website
+        bind :80
+        bind :443 ssl crt /etc/haproxy/ssl/www.viroo.tech.pem
+        default_backend servers
+backend servers
         balance roundrobin
-        option forwardfor
-        http-request set-header X-Forwarded-Port %[dst_port]
-        server web-01 52.91.122.57:80 check
-        server web-02 52.201.165.108:80 check
-
-#--justboj.tech-params-begin--
-backend justboj.tech-backend
-        balance roundrobin
-        server 515407-web-01 52.91.122.57:80 check
-        server 515407-web-02 52.201.165.108:80 check
-frontend justboj.tech-frontend
-        bind *:443
-        mode http
-        default_backend justboj.tech-backend
-#--justboj.tech-params-end--
+        option httpchk GET /
+        option redispatch
+        redirect scheme https if !{ ssl_fc }
+        server 349269-web-01 54.144.152.30:80 check
+        server 349269-web-02 35.174.176.12:80 check
