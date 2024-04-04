@@ -1,22 +1,28 @@
 #!/usr/bin/env bash
 
 # update
+
 apt-get update
 
 # Install nginx
+
 apt-get install -y nginx
 
 
 # create nignx/html
+
 mkdir /etc/nginx/html
 
 #  Create a html file
+
 touch /etc/nginx/html/index.html
 
 # write hello world to index file
-icho "Hello World!" > /etc/nginx/html/index.html
+
+echo "Hello World!" > /etc/nginx/html/index.html
 
 # niginx set
+
 printf %s "server {
 
      listen      80;
@@ -33,4 +39,5 @@ printf %s "server {
 
 
 # rrestart
+
 service nginx restart

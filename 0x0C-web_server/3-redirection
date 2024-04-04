@@ -1,11 +1,76 @@
 #!/usr/bin/env bash
-# nginx config
 
-sudo apt-get -y install nginx
-sudo bash -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
+# nginx.
 
-redirect="\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n"
+apt-get update
 
-sudo sed -i "53s|.*|$redirect|" /etc/nginx/sites-enabled/default
+# nginx installinh.
 
-sudo /etc/init.d/nginx restart
+apt-get install -y nginx
+
+
+# make directory.
+
+mkdir /etc/nginx/html
+
+# make file.
+
+touch /etc/nginx/html/index.html
+
+# rite hello world.
+
+echo "Hello World!" > /etc/nginx/html/index.html
+
+# nginx setting.
+
+printf %s "server {
+
+     listen      80;
+
+     listen      [::]:80 default_server;
+
+     root        /etc/nginx/html;
+
+     index       index.html index.htm;
+
+}
+
+" > /etc/nginx/sites-available/default
+
+
+# new server config
+
+echo "server {
+
+    listen 80;
+
+    listen [::]:80;
+
+
+    root /var/www/html;
+    
+    # add indexing
+    
+    index index.html index.htm index.nginx-debian.html;
+
+
+    location /redirect_me {
+
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+
+    }
+
+}" | sudo tee /etc/nginx/sites-available/redirect
+
+
+# enabling site
+
+sudo ln -s /etc/nginx/sites-available/redirect /etc/nginx/sites-enabled/
+
+
+
+# testing Nginx
+
+sudo nginx -t
+
+sudo service nginx reload
