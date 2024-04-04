@@ -8,11 +8,11 @@ global
         group haproxy
         daemon
 
-        # ssh
+        # ssh materialss
         ca-base /etc/ssl/certs
         crt-base /etc/ssl/private
 
-        # ssh
+        #
         ssl-default-bind-ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-S>
         ssl-default-bind-ciphersuites TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256
         ssl-default-bind-options ssl-min-ver TLSv1.2 no-tls-tickets
@@ -47,5 +47,5 @@ frontend https3a2f2fget-frontend-https
 
 backend https3a2f2fget-backend
         balance roundrobin
-        server 515407-web-01 52.91.122.57:80 check
-        server 515407-web-02 52.201.165.108:80 check
+        server 151666-web-01 52.91.122.57:80 check
+        server 151666-web-02 52.201.165.108:80 check
