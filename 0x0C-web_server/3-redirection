@@ -1,27 +1,27 @@
 #!/usr/bin/env bash
 
-# nginx.
+# nigx install
 
 apt-get update
 
-# nginx installinh.
+#
 
 apt-get install -y nginx
 
 
-# make directory.
+#
 
 mkdir /etc/nginx/html
 
-# make file.
+#
 
 touch /etc/nginx/html/index.html
 
-# rite hello world.
+#
 
 echo "Hello World!" > /etc/nginx/html/index.html
 
-# nginx setting.
+#
 
 printf %s "server {
 
@@ -38,7 +38,7 @@ printf %s "server {
 " > /etc/nginx/sites-available/default
 
 
-# new server config
+#
 
 echo "server {
 
@@ -48,9 +48,10 @@ echo "server {
 
 
     root /var/www/html;
-    
-    # add indexing
-    
+
+
+    #
+
     index index.html index.htm index.nginx-debian.html;
 
 
@@ -63,13 +64,13 @@ echo "server {
 }" | sudo tee /etc/nginx/sites-available/redirect
 
 
-# enabling site
+#
 
 sudo ln -s /etc/nginx/sites-available/redirect /etc/nginx/sites-enabled/
 
 
 
-# testing Nginx
+#
 
 sudo nginx -t
 
