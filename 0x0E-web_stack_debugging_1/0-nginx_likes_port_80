@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# make server listening on prot 80 by configurtions it to all lp4
+
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
