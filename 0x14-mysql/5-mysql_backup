@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Backup
+#
 
-# list of vars
+#
 day=$(date +"%d")
 month=$(date +"%m")
 year=$(date +"%Y")
