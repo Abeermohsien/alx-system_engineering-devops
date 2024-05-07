@@ -10,12 +10,12 @@ def recurse(subreddit, hot_list=[], after="", count=0):
         "User-Agent": "0x16-api_advanced:project:\
 v1.0.0 (by /u/firdaus_cartoon_jr)"
     }
-    params = {
+    paramters = {
         "after": after,
         "count": count,
         "limit": 100
     }
-    response = requests.get(url, headers=headers, params=params,
+    response = requests.get(url, headers=headers, params=paramters,
                             allow_redirects=False)
     if response.status_code == 404:
         return None
